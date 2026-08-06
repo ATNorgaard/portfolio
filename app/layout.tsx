@@ -13,9 +13,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://andreas-noergaard-ai.andapanda.chatgpt.site"),
   title: "Andreas Nørgaard | AI Solutions Architect",
   description:
     "AI, data og arkitektur omsat til klar retning og løsninger, der virker i virkeligheden.",
+  openGraph: {
+    title: "Andreas Nørgaard | AI Solutions Architect",
+    description: "AI, data og arkitektur omsat til klar retning og løsninger, der virker i virkeligheden.",
+    type: "website",
+    locale: "da_DK",
+    images: [{ url: "/og.png", width: 1731, height: 909, alt: "Andreas Nørgaard — AI Solutions Architect" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Andreas Nørgaard | AI Solutions Architect",
+    description: "AI, data og arkitektur omsat til klar retning og løsninger, der virker i virkeligheden.",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({
