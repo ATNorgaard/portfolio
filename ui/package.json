@@ -1,0 +1,30 @@
+{
+  "name": "an-ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Andreas Nørgaard design system — the editorial ink/paper/lime component library behind the personal site.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles/index.css",
+    "./components.css": "./dist/styles/components.css",
+    "./tokens.css": "./dist/styles/tokens.css",
+    "./fonts.css": "./dist/styles/fonts.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  }
+}

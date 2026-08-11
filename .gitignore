@@ -42,3 +42,13 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+
+# design-sync: staged converter scripts, generated bundle, and machine state.
+# The durable inputs under .design-sync/ (config.json, NOTES.md,
+# conventions.md, previews/) are committed.
+/.ds-sync/
+/ds-bundle/
+/ui/dist/
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules

@@ -1,0 +1,30 @@
+{
+  "projectId": "c1ad9fd9-016e-4735-8515-9bd83c311c3b",
+  "shape": "package",
+  "pkg": "an-ui",
+  "globalName": "ANUI",
+  "entry": "./ui/dist/index.js",
+  "buildCmd": "node ui/build.mjs",
+  "cssEntry": "dist/styles/components.css",
+  "extraFonts": ["dist/styles/fonts.css"],
+  "docsDir": "docs",
+  "guidelinesGlob": ["docs/guides/**/*.md"],
+  "readmeHeader": ".design-sync/conventions.md",
+  "overrides": {
+    "Callout": { "cardMode": "column" },
+    "CapabilityItem": { "cardMode": "column" },
+    "CapabilityList": { "cardMode": "column" },
+    "CaseCard": { "cardMode": "column" },
+    "CaseGrid": { "cardMode": "column" },
+    "DisplayHeading": { "cardMode": "column" },
+    "Fact": { "cardMode": "column" },
+    "FactStrip": { "cardMode": "column" },
+    "ProseColumns": { "cardMode": "column" },
+    "Reveal": { "cardMode": "column" },
+    "Section": { "cardMode": "column" },
+    "SectionHeading": { "cardMode": "column" },
+    "SiteHeader": { "cardMode": "column" },
+    "Timeline": { "cardMode": "column" },
+    "TimelineItem": { "cardMode": "column" }
+  }
+}

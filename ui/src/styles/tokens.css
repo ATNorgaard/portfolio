@@ -1,0 +1,146 @@
+/* an-ui design tokens.
+ *
+ * Every token is namespaced --an-*. These are the public styling surface of
+ * the design system: components consume them internally, and anything you
+ * build alongside the components should reach for these rather than raw hex.
+ */
+
+:root {
+  /* ---- Colour: the ink / paper / lime triad -------------------------- */
+
+  /* Ink — the dark editorial ground. Used for the hero, footer and the
+     education strip. Text on ink is white or --an-on-ink-*. */
+  --an-ink: #142221;
+  /* One step lighter than ink; the ground for the capabilities section. */
+  --an-ink-soft: #223331;
+  /* The projects section ground — between ink and ink-soft. */
+  --an-ink-panel: #1a2928;
+  /* Scrolled header / deepest surface. */
+  --an-ink-deep: #0e1b1a;
+
+  /* Paper — the warm off-white ground. The default page background. */
+  --an-paper: #f1efe7;
+  /* Paper, one step deeper. Callout and inset panel ground. */
+  --an-paper-deep: #e6e2d7;
+
+  /* Lime — the single accent. --an-accent-bright is the working accent
+     (on ink and as the contact-section ground); --an-accent is its muted
+     sibling; the deep/shadow pair are the on-paper legible variants. */
+  --an-accent: #a9bd6e;
+  --an-accent-bright: #c4d987;
+  --an-accent-deep: #708046;
+  --an-accent-shadow: #50602e;
+
+  /* Text on paper */
+  --an-text-strong: var(--an-ink);
+  --an-text-body: #4e5752;
+  --an-text-body-soft: #515b55;
+  --an-text-muted: #666b65;
+  --an-text-faint: #7f857d;
+
+  /* Text on ink */
+  --an-on-ink: #ffffff;
+  --an-on-ink-strong: rgba(255, 255, 255, 0.82);
+  --an-on-ink-body: rgba(255, 255, 255, 0.72);
+  --an-on-ink-muted: rgba(255, 255, 255, 0.58);
+  --an-on-ink-faint: rgba(255, 255, 255, 0.42);
+
+  /* Hairlines. The system draws structure with 1px rules, not with
+     radii or shadows — there is no border-radius token by design. */
+  --an-line-dark: rgba(20, 34, 33, 0.18);
+  --an-line-light: rgba(255, 255, 255, 0.2);
+  --an-line-light-soft: rgba(255, 255, 255, 0.12);
+  --an-line-contrast: rgba(20, 34, 33, 0.35);
+
+  --an-shadow-lift: 0 22px 60px rgba(6, 15, 14, 0.24);
+  --an-shadow-header: 0 14px 40px rgba(7, 17, 16, 0.16);
+
+  /* ---- Typography ---------------------------------------------------- */
+
+  --an-font-sans: "Geist", ui-sans-serif, system-ui, Arial, Helvetica, sans-serif;
+  --an-font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  /* The emphasis face. Every <em> inside a display heading is serif — that
+     italic serif against Geist is the system's signature move. */
+  --an-font-serif: Georgia, "Times New Roman", serif;
+
+  /* Display sizes, largest to smallest. All fluid. */
+  --an-text-display: clamp(3.4rem, 7.2vw, 7.9rem);
+  --an-text-display-lg: clamp(3.6rem, 8vw, 8.5rem);
+  --an-text-display-md: clamp(3rem, 6vw, 6.5rem);
+  --an-text-display-sm: clamp(3rem, 5.8vw, 6.25rem);
+
+  --an-text-title: clamp(1.5rem, 2.5vw, 2.25rem);
+  --an-text-subtitle: clamp(1.3rem, 2.2vw, 2rem);
+  --an-text-heading: clamp(1.2rem, 2vw, 1.75rem);
+  --an-text-lead: clamp(1rem, 1.5vw, 1.3rem);
+  --an-text-body-size: clamp(1rem, 1.35vw, 1.2rem);
+  --an-text-base: 1rem;
+  --an-text-small: 0.92rem;
+  /* Mono micro-label size — eyebrows, section numbers, nav, captions. */
+  --an-text-micro: 0.7rem;
+  --an-text-micro-sm: 0.65rem;
+
+  --an-tracking-display: -0.065em;
+  --an-tracking-title: -0.045em;
+  --an-tracking-heading: -0.03em;
+  /* Mono labels are always uppercase with open tracking. */
+  --an-tracking-label: 0.12em;
+  --an-tracking-label-wide: 0.18em;
+
+  --an-leading-display: 0.91;
+  --an-leading-title: 1.05;
+  --an-leading-body: 1.65;
+  --an-leading-prose: 1.72;
+
+  --an-weight-display: 440;
+  --an-weight-title: 480;
+  --an-weight-heading: 520;
+  --an-weight-bold: 700;
+
+  /* ---- Space --------------------------------------------------------- */
+
+  --an-space-3xs: 0.4rem;
+  --an-space-2xs: 0.75rem;
+  --an-space-xs: 1rem;
+  --an-space-sm: 1.25rem;
+  --an-space-md: 1.75rem;
+  --an-space-lg: 2rem;
+  --an-space-xl: 3rem;
+  --an-space-2xl: 4rem;
+
+  /* The page gutter. Every full-bleed block uses this for its inline
+     padding so left edges line up down the whole page. */
+  --an-gutter: clamp(1.25rem, 4vw, 4.5rem);
+  --an-gutter-wide: clamp(2rem, 7vw, 8rem);
+  /* Vertical rhythm between sections. */
+  --an-section-y: clamp(5rem, 10vw, 10rem);
+  --an-column-gap: clamp(2rem, 7vw, 8rem);
+  --an-heading-gap: clamp(3.5rem, 7vw, 7rem);
+
+  --an-header-height: 76px;
+  --an-header-height-scrolled: 66px;
+  --an-header-height-compact: 64px;
+  /* Width of the left rail that carries section numbers. */
+  --an-rail: minmax(140px, 0.24fr);
+  --an-measure: 680px;
+
+  /* ---- Motion -------------------------------------------------------- */
+
+  /* The one easing curve the system uses for anything expressive. */
+  --an-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --an-ease-soft: ease;
+
+  --an-dur-fast: 160ms;
+  --an-dur-mid: 320ms;
+  --an-dur-slow: 720ms;
+  --an-dur-reveal: 950ms;
+
+  /* ---- Runtime channels ---------------------------------------------
+   * Written by MotionProvider on every frame; read by parallax and by the
+   * drifting outline circles. Safe defaults so everything renders correctly
+   * with no JavaScript at all.
+   */
+  --an-page-progress: 0;
+  --an-hero-scroll: 0;
+  --an-parallax-offset: 0px;
+}
