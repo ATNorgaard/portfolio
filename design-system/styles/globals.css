@@ -1,0 +1,320 @@
+/* an-ui/shadcn — the stylesheet.
+ *
+ * One import at the root of any route that uses the design system:
+ *
+ *   import "@/design-system/styles/globals.css";
+ *
+ * Colour comes from the existing an-ui token set (ui/src/styles/tokens.css):
+ * every shadcn semantic variable below is an alias of an --an-* token, so the
+ * palette has a single source of truth. Layout, type scale and motion follow
+ * the "Personal Portfolio" reference (Sk Nahid Hasan): heavy uppercase display
+ * type, two-tone headings, hairline structure, one accent that carries every
+ * interactive element.
+ */
+
+/* Tailwind is imported piecewise so the utilities are *unlayered*. The site's
+   own app/globals.css is unlayered too, and an unlayered `a { color: inherit }`
+   would otherwise beat every `text-*` utility no matter its specificity. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css";
+@import "tw-animate-css";
+@import "../../ui/src/styles/tokens.css";
+
+@source "../";
+@source "../../app";
+
+/* Tone variants. A section switches its whole semantic palette by adding one
+   of these classes — every component underneath re-reads the variables. */
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant accent-tone (&:where(.tone-accent, .tone-accent *));
+
+/* ---- Semantic palette: paper (default) --------------------------------- */
+
+:root {
+  /* One derived tint: cards sit a step *above* the paper ground, the way the
+     reference floats white cards on light grey. */
+  --an-paper-bright: #faf9f4;
+
+  --background: var(--an-paper);
+  --foreground: var(--an-ink);
+
+  --card: var(--an-paper-bright);
+  --card-foreground: var(--an-ink);
+  --popover: var(--an-paper-bright);
+  --popover-foreground: var(--an-ink);
+
+  --primary: var(--an-ink);
+  --primary-foreground: var(--an-paper);
+
+  --secondary: var(--an-paper-deep);
+  --secondary-foreground: var(--an-ink);
+
+  --muted: var(--an-paper-deep);
+  --muted-foreground: var(--an-text-muted);
+
+  --accent: var(--an-accent-bright);
+  --accent-foreground: var(--an-ink);
+  /* Accent as *text* on the current ground. Lime-bright is unreadable on
+     paper, so on paper this is the deep lime; on ink it is the bright one. */
+  --accent-strong: var(--an-accent-deep);
+
+  --destructive: #a3472f;
+  --destructive-foreground: #ffffff;
+
+  --border: var(--an-line-dark);
+  --input: var(--an-line-contrast);
+  --ring: var(--an-accent-deep);
+
+  /* Reference-specific channels */
+  --heading-muted: rgba(20, 34, 33, 0.42); /* second colour of a two-tone heading */
+  --ghost: rgba(20, 34, 33, 0.05);          /* watermark text behind a hero */
+  --grid-line: rgba(20, 34, 33, 0.08);      /* the faint hero grid */
+
+  --radius: 4px;
+}
+
+/* ---- Paper tone, explicitly — to nest a paper card inside an ink section */
+
+.tone-paper {
+  --background: var(--an-paper);
+  --foreground: var(--an-ink);
+  --card: var(--an-paper-bright);
+  --card-foreground: var(--an-ink);
+  --popover: var(--an-paper-bright);
+  --popover-foreground: var(--an-ink);
+  --primary: var(--an-ink);
+  --primary-foreground: var(--an-paper);
+  --secondary: var(--an-paper-deep);
+  --secondary-foreground: var(--an-ink);
+  --muted: var(--an-paper-deep);
+  --muted-foreground: var(--an-text-muted);
+  --accent: var(--an-accent-bright);
+  --accent-foreground: var(--an-ink);
+  --accent-strong: var(--an-accent-deep);
+  --border: var(--an-line-dark);
+  --input: var(--an-line-contrast);
+  --ring: var(--an-accent-deep);
+  --heading-muted: rgba(20, 34, 33, 0.42);
+  --ghost: rgba(20, 34, 33, 0.05);
+  --grid-line: rgba(20, 34, 33, 0.08);
+}
+
+/* ---- Ink tone ----------------------------------------------------------- */
+
+.dark {
+  --background: var(--an-ink);
+  --foreground: var(--an-on-ink);
+
+  --card: var(--an-ink-soft);
+  --card-foreground: var(--an-on-ink);
+  --popover: var(--an-ink-panel);
+  --popover-foreground: var(--an-on-ink);
+
+  --primary: var(--an-paper);
+  --primary-foreground: var(--an-ink);
+
+  --secondary: var(--an-ink-panel);
+  --secondary-foreground: var(--an-on-ink);
+
+  --muted: var(--an-ink-panel);
+  --muted-foreground: var(--an-on-ink-muted);
+
+  --accent: var(--an-accent-bright);
+  --accent-foreground: var(--an-ink);
+  --accent-strong: var(--an-accent-bright);
+
+  --border: var(--an-line-light-soft);
+  --input: var(--an-line-light);
+  --ring: var(--an-accent-bright);
+
+  --heading-muted: var(--an-on-ink-faint);
+  --ghost: rgba(255, 255, 255, 0.05);
+  --grid-line: rgba(255, 255, 255, 0.07);
+}
+
+/* ---- Accent (lime) tone — the hero ground and the closing CTA ----------- */
+
+.tone-accent {
+  --background: var(--an-accent-bright);
+  --foreground: var(--an-ink);
+
+  --card: var(--an-ink);
+  --card-foreground: var(--an-on-ink);
+  --popover: var(--an-paper-bright);
+  --popover-foreground: var(--an-ink);
+
+  --primary: var(--an-ink);
+  --primary-foreground: var(--an-paper);
+
+  --secondary: var(--an-accent);
+  --secondary-foreground: var(--an-ink);
+
+  --muted: var(--an-accent);
+  --muted-foreground: var(--an-accent-shadow);
+
+  --accent: var(--an-ink);
+  --accent-foreground: var(--an-accent-bright);
+  --accent-strong: var(--an-accent-shadow);
+
+  --border: rgba(20, 34, 33, 0.22);
+  --input: rgba(20, 34, 33, 0.4);
+  --ring: var(--an-ink);
+
+  --heading-muted: rgba(20, 34, 33, 0.45);
+  --ghost: rgba(255, 255, 255, 0.16);
+  --grid-line: rgba(20, 34, 33, 0.12);
+}
+
+/* ---- Tailwind theme ------------------------------------------------------ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-strong: var(--accent-strong);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-heading-muted: var(--heading-muted);
+  --color-ghost: var(--ghost);
+  --color-grid-line: var(--grid-line);
+
+  /* Raw palette, for the rare case a block needs a fixed colour regardless
+     of tone (e.g. the lime arrow tile inside an ink button). */
+  --color-ink: var(--an-ink);
+  --color-ink-soft: var(--an-ink-soft);
+  --color-ink-panel: var(--an-ink-panel);
+  --color-ink-deep: var(--an-ink-deep);
+  --color-paper: var(--an-paper);
+  --color-paper-deep: var(--an-paper-deep);
+  --color-paper-bright: var(--an-paper-bright);
+  --color-lime: var(--an-accent-bright);
+  --color-lime-muted: var(--an-accent);
+  --color-lime-deep: var(--an-accent-deep);
+  --color-lime-shadow: var(--an-accent-shadow);
+
+  --font-sans: var(--font-geist-sans), "Geist", ui-sans-serif, system-ui, Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-serif: Georgia, "Times New Roman", serif;
+
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+
+  /* Display scale — fluid, heavy, tight. */
+  --text-display-xl: clamp(4.5rem, 14vw, 15rem);
+  --text-display-xl--line-height: 0.86;
+  --text-display-xl--letter-spacing: -0.05em;
+  --text-display: clamp(3.25rem, 8vw, 7.5rem);
+  --text-display--line-height: 0.9;
+  --text-display--letter-spacing: -0.045em;
+  --text-headline: clamp(2.25rem, 4.6vw, 4.25rem);
+  --text-headline--line-height: 0.96;
+  --text-headline--letter-spacing: -0.04em;
+  --text-title: clamp(1.5rem, 2.6vw, 2.5rem);
+  --text-title--line-height: 1.04;
+  --text-title--letter-spacing: -0.03em;
+  --text-lead: clamp(1rem, 1.4vw, 1.2rem);
+  --text-lead--line-height: 1.6;
+  --text-micro: 0.7rem;
+  --text-micro--line-height: 1.2;
+  --text-micro--letter-spacing: 0.12em;
+
+  --tracking-label: 0.12em;
+  --tracking-label-wide: 0.18em;
+
+  --spacing-gutter: clamp(1.25rem, 4vw, 4.5rem);
+  --spacing-section: clamp(5rem, 10vw, 9rem);
+
+  --shadow-lift: var(--an-shadow-lift);
+  --shadow-header: var(--an-shadow-header);
+
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+  --animate-marquee-reverse: marquee-reverse var(--marquee-duration, 40s) linear infinite;
+  --animate-spin-slow: spin 14s linear infinite;
+  --animate-fade-up: fade-up 0.9s var(--ease-out-expo) both;
+
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+  @keyframes marquee-reverse {
+    from { transform: translateX(-50%); }
+    to { transform: translateX(0); }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(24px); filter: blur(6px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+}
+
+/* ---- Base ----------------------------------------------------------------- */
+
+@layer base {
+  .ds {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .ds ::selection {
+    background: var(--an-accent-bright);
+    color: var(--an-ink);
+  }
+  .ds :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+  /* Emphasis inside display type is italic serif in the accent — the one
+     flourish carried over from the editorial system. */
+  .ds :is(h1, h2, h3) em {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    text-transform: none;
+    color: var(--accent-strong);
+  }
+}
+
+/* Faint hero grid, drawn with two gradients so it needs no asset.
+   (Named without a `bg-` prefix so tailwind-merge never treats it as a
+   background colour and drops `bg-background` beside it.) */
+@utility grid-overlay {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: var(--grid-size, 25%) var(--grid-size-y, 33.333%);
+}
+@utility mask-fade-x {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ds *,
+  .ds *::before,
+  .ds *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
