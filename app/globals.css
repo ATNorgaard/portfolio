@@ -883,20 +883,6 @@ footer { z-index: 6; }
     transform 240ms ease;
 }
 
-.case-card::before {
-  background: radial-gradient(
-    420px circle at var(--gx, 50%) var(--gy, 50%),
-    rgba(255, 255, 255, 0.4),
-    transparent 60%
-  );
-  content: "";
-  inset: 0;
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
-  transition: opacity 300ms ease;
-}
-
 .case-card:hover {
   --lift: -8px;
   background: var(--accent-bright);
@@ -906,13 +892,7 @@ footer { z-index: 6; }
   z-index: 2;
 }
 
-.case-card:hover::before {
-  opacity: 1;
-}
 
-.case-card > * {
-  position: relative;
-}
 
 .case-meta {
   color: var(--accent-bright);

@@ -189,8 +189,6 @@ export function ScrollExperience() {
         const py = clamp((event.clientY - rect.top) / rect.height, 0, 1);
         card.style.setProperty("--rx", `${((0.5 - py) * 9).toFixed(2)}deg`);
         card.style.setProperty("--ry", `${((px - 0.5) * 11).toFixed(2)}deg`);
-        card.style.setProperty("--gx", `${(px * 100).toFixed(1)}%`);
-        card.style.setProperty("--gy", `${(py * 100).toFixed(1)}%`);
       };
       const leave = () => {
         card.style.setProperty("--rx", "0deg");
