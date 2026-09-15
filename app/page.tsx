@@ -100,6 +100,7 @@ export default function Home() {
           <a href="#fokus">Fokus</a>
           <a href="#erfaring">Erfaring</a>
           <a href="#projekter">Projekter</a>
+          <a href="#vaerktoej">Værktøj</a>
         </nav>
         <a className="header-contact" href="#kontakt">
           Sig hej <span aria-hidden="true">↗</span>
@@ -278,6 +279,32 @@ export default function Home() {
               </article>
             ))}
           </div>
+
+          <a
+            className="tool-feature"
+            id="vaerktoej"
+            href="https://loesningsbygger.anconsult.app"
+            target="_blank"
+            rel="noreferrer"
+            data-reveal="card"
+          >
+            <div className="tool-copy">
+              <div className="case-meta">
+                <span>Værktøj</span>
+                <span>Live</span>
+              </div>
+              <h3>Løsningsbygger</h3>
+              <p>
+                Et letvægtsværktøj til samtalen mellem ledelse og teknikere om en data- og
+                AI-løsning. Seks lag, 31 teknologier, seks AI-behov og en regelmotor, der
+                oversætter valg til beslutninger med ejer. Prøv det selv, og del løsningen med
+                et link.
+              </p>
+            </div>
+            <span className="button button-light">
+              Åbn Løsningsbygger <span aria-hidden="true">↗</span>
+            </span>
+          </a>
         </div>
       </section>
 

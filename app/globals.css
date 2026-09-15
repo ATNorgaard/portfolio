@@ -833,6 +833,62 @@ a {
   transition: color 180ms ease;
 }
 
+.tool-feature {
+  align-items: end;
+  border: 1px solid var(--line-light);
+  border-top: 0;
+  color: #fff;
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: minmax(0, 1fr) auto;
+  padding: 2.5rem 1.75rem;
+  position: relative;
+  text-decoration: none;
+  transition: background 240ms ease, color 240ms ease, box-shadow 240ms ease;
+}
+
+.tool-feature .case-meta {
+  margin-bottom: 1.5rem;
+}
+
+.tool-feature h3 {
+  font-size: clamp(1.9rem, 3.4vw, 3rem);
+  font-weight: 480;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+  margin: 0 0 1rem;
+}
+
+.tool-feature p {
+  color: rgba(255, 255, 255, 0.58);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 62ch;
+  transition: color 180ms ease;
+}
+
+.tool-feature:hover,
+.tool-feature:focus-visible {
+  background: var(--accent-bright);
+  box-shadow: 0 22px 60px rgba(6, 15, 14, 0.24);
+  color: var(--ink);
+  outline: none;
+  z-index: 2;
+}
+
+.tool-feature:hover .case-meta,
+.tool-feature:hover p,
+.tool-feature:focus-visible .case-meta,
+.tool-feature:focus-visible p {
+  color: var(--ink);
+}
+
+.tool-feature:hover .button,
+.tool-feature:focus-visible .button {
+  background: var(--ink);
+  color: var(--paper);
+}
+
 .contact {
   background: var(--accent-bright);
   color: var(--ink);
@@ -1156,6 +1212,15 @@ footer > a:last-child {
 
   .case-card {
     min-height: 330px;
+  }
+
+  .tool-feature {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.25rem;
+  }
+
+  .tool-feature .button {
+    width: 100%;
   }
 }
 
