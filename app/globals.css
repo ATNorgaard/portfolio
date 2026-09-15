@@ -525,6 +525,7 @@ a {
 .capabilities,
 .experience,
 .projects,
+.posts,
 .contact,
 footer {
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
@@ -535,8 +536,9 @@ footer {
 .capabilities { z-index: 2; }
 .experience { z-index: 3; }
 .projects { z-index: 4; }
-.contact { z-index: 5; }
-footer { z-index: 6; }
+.posts { z-index: 5; }
+.contact { z-index: 6; }
+footer { z-index: 7; }
 
 .section-label {
   align-self: start;
@@ -1020,6 +1022,95 @@ footer { z-index: 6; }
   will-change: transform;
 }
 
+/* Seneste indlæg: curated LinkedIn posts on a light ground */
+.posts {
+  background: var(--paper-deep);
+  padding-top: calc(clamp(5rem, 10vw, 10rem) + var(--radius-lg));
+}
+
+.post-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.post-card {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.75rem;
+  transition: background 240ms ease, border-color 240ms ease, transform 240ms ease;
+}
+
+.post-card:hover {
+  background: #fff;
+  border-color: rgba(20, 34, 33, 0.45);
+}
+
+.post-card .case-meta {
+  color: var(--text-muted);
+}
+
+.post-card h3 {
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  font-weight: 480;
+  letter-spacing: -0.035em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.post-body p {
+  color: #515b55;
+  font-size: 0.95rem;
+  line-height: 1.62;
+  margin: 0 0 0.9rem;
+}
+
+.post-body p:last-child {
+  margin-bottom: 0;
+}
+
+.post-link {
+  align-self: start;
+  margin-top: auto;
+}
+
+.post-featured {
+  display: grid;
+  gap: 1.5rem clamp(2rem, 5vw, 5rem);
+  grid-column: 1 / -1;
+  grid-template-areas:
+    "meta meta"
+    "hook body"
+    "link body";
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  grid-template-rows: auto 1fr auto;
+  padding: 2.5rem 2rem;
+}
+
+.post-featured .case-meta { grid-area: meta; }
+.post-featured h3 {
+  font-size: clamp(1.7rem, 3vw, 2.7rem);
+  grid-area: hook;
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+}
+.post-featured .post-body { grid-area: body; }
+.post-featured .post-body p { font-size: 1.02rem; }
+.post-featured .post-link {
+  grid-area: link;
+  justify-self: start;
+}
+
+.posts-all {
+  display: inline-block;
+  margin-top: 2.5rem;
+}
+
 .stagger-group > :nth-child(2) { --d: 90ms; }
 .stagger-group > :nth-child(3) { --d: 180ms; }
 .stagger-group > :nth-child(4) { --d: 270ms; }
@@ -1493,5 +1584,21 @@ footer > a:last-child {
   .motion-band > div {
     animation: none !important;
     transform: none !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .posts {
+    padding-top: calc(5rem + var(--radius-lg));
+  }
+
+  .post-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .post-featured {
+    display: flex;
+    flex-direction: column;
+    padding: 1.75rem;
   }
 }

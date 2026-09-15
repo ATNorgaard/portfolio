@@ -1,5 +1,8 @@
 import { ScrollExperience } from "./ScrollExperience";
 import { SplitWords } from "./SplitWords";
+import { linkedinPosts, LINKEDIN_ACTIVITY_URL } from "../content/linkedin-posts";
+
+const postDate = new Intl.DateTimeFormat("da-DK", { day: "numeric", month: "long", year: "numeric" });
 
 const capabilities = [
   {
@@ -102,6 +105,7 @@ export default function Home() {
           <a href="#erfaring">Erfaring</a>
           <a href="#projekter">Projekter</a>
           <a href="#vaerktoej">Værktøj</a>
+          <a href="#indlaeg">Indlæg</a>
         </nav>
         <a className="header-contact" href="#kontakt" data-magnetic>
           Sig hej <span aria-hidden="true">↗</span>
@@ -307,6 +311,56 @@ export default function Home() {
             <span className="button button-light" data-magnetic>
               Åbn Løsningsbygger <span aria-hidden="true">↗</span>
             </span>
+          </a>
+        </div>
+      </section>
+
+      <section className="section posts" id="indlaeg" aria-labelledby="posts-title">
+        <div className="section-label" data-reveal="left">
+          <span>05</span>
+          <p>Seneste indlæg</p>
+        </div>
+        <div className="posts-content" data-skew>
+          <div className="section-heading-row dark-text">
+            <h2 id="posts-title" data-reveal="words">
+              <SplitWords text="Tanker fra feedet." />
+            </h2>
+            <p data-reveal="up">
+              Jeg skriver jævnligt på LinkedIn om AI, data og det, der sker mellem
+              ledelsesbeslutningen og teknikken. Her er de seneste.
+            </p>
+          </div>
+          <div className="post-grid stagger-group">
+            {linkedinPosts.map((post, index) => (
+              <article
+                className={index === 0 ? "post-card post-featured" : "post-card"}
+                key={post.date + post.tag}
+                data-reveal="card"
+              >
+                <div className="case-meta">
+                  <span>{post.tag}</span>
+                  <time dateTime={post.date}>{postDate.format(new Date(post.date))}</time>
+                </div>
+                <h3>{post.hook}</h3>
+                <div className="post-body">
+                  {post.paragraphs.map((paragraph) => (
+                    <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+                  ))}
+                </div>
+                <a className="text-link post-link" href={post.href} target="_blank" rel="noreferrer">
+                  Læs på LinkedIn <span aria-hidden="true">↗</span>
+                </a>
+              </article>
+            ))}
+          </div>
+          <a
+            className="text-link posts-all"
+            href={LINKEDIN_ACTIVITY_URL}
+            target="_blank"
+            rel="noreferrer"
+            data-reveal="up"
+          >
+            Se alle indlæg på LinkedIn <span aria-hidden="true">↗</span>
           </a>
         </div>
       </section>
