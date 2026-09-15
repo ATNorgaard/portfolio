@@ -1,4 +1,5 @@
 import { ScrollExperience } from "./ScrollExperience";
+import { SplitWords } from "./SplitWords";
 
 const capabilities = [
   {
@@ -102,7 +103,7 @@ export default function Home() {
           <a href="#projekter">Projekter</a>
           <a href="#vaerktoej">Værktøj</a>
         </nav>
-        <a className="header-contact" href="#kontakt">
+        <a className="header-contact" href="#kontakt" data-magnetic>
           Sig hej <span aria-hidden="true">↗</span>
         </a>
       </header>
@@ -111,16 +112,14 @@ export default function Home() {
         <div className="hero-copy" id="main-content">
           <p className="eyebrow">AI · DATA · ARKITEKTUR</p>
           <h1 id="hero-title">
-            <span className="hero-line">Jeg gør AI</span>
-            <span className="hero-line"><em>anvendelig</em> i</span>
-            <span className="hero-line">virkeligheden.</span>
+            <SplitWords text={"Jeg gør AI\n*anvendelig* i\nvirkeligheden."} />
           </h1>
           <p className="hero-intro">
             Jeg hjælper virksomhedsledere med at skelne mellem støj og reelle skift — og
             omsætter beslutninger til data, arkitektur og løsninger, der kan drives.
           </p>
           <div className="hero-actions">
-            <a className="button button-light" href="#projekter">
+            <a className="button button-light" href="#projekter" data-magnetic>
               Se udvalgte projekter <span aria-hidden="true">↓</span>
             </a>
             <a className="text-link light" href="mailto:atnoergaard@gmail.com">
@@ -162,11 +161,9 @@ export default function Home() {
           <span>01</span>
           <p>Om mig</p>
         </div>
-        <div className="about-content">
-          <h2 id="about-title" data-reveal="headline">
-            Teknologi skal kunne
-            <br />
-            <em>forklares</em>, før den kan skaleres.
+        <div className="about-content" data-skew>
+          <h2 id="about-title" data-reveal="words">
+            <SplitWords text={"Teknologi skal kunne\n*forklares*, før den kan skaleres."} />
           </h2>
           <div className="about-columns stagger-group">
             <p data-reveal="up">
@@ -187,14 +184,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section capabilities" id="fokus" aria-labelledby="capabilities-title">
+      <section className="section capabilities" id="fokus" aria-labelledby="capabilities-title" data-spotlight>
         <div className="section-label light-label" data-reveal="left">
           <span>02</span>
           <p>Fokus</p>
         </div>
-        <div className="capabilities-content">
+        <div className="capabilities-content" data-skew>
           <div className="section-heading-row">
-            <h2 id="capabilities-title" data-reveal="headline">Fra ambition til drift.</h2>
+            <h2 id="capabilities-title" data-reveal="words">
+              <SplitWords text="Fra ambition til drift." />
+            </h2>
             <p data-reveal="up">
               Jeg bevæger mig mellem ledelsesrummet og det tekniske maskinrum — med blik for
               både retning, realisme og eksekvering.
@@ -202,7 +201,7 @@ export default function Home() {
           </div>
           <div className="capability-list stagger-group">
             {capabilities.map((item) => (
-              <article className="capability-item" key={item.number} data-reveal="left">
+              <article className="capability-item" key={item.number} data-reveal="cascade">
                 <span>{item.number}</span>
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
@@ -217,18 +216,20 @@ export default function Home() {
           <span>03</span>
           <p>Erfaring</p>
         </div>
-        <div className="experience-content">
+        <div className="experience-content" data-skew>
           <div className="section-heading-row dark-text">
-            <h2 id="experience-title" data-reveal="headline">Teknisk dybde. Forretningsmæssigt udsyn.</h2>
+            <h2 id="experience-title" data-reveal="words">
+              <SplitWords text="Teknisk dybde. Forretningsmæssigt udsyn." />
+            </h2>
             <p data-reveal="up">
               En baggrund fra rådgivning, softwareudvikling, salg og Forsvaret har lært mig at
               gøre komplekse situationer håndterbare — og få forskellige fagligheder til at
               arbejde mod samme mål.
             </p>
           </div>
-          <div className="timeline stagger-group" data-reveal="line">
+          <div className="timeline stagger-group">
             {experience.map((item) => (
-              <article className="timeline-item" key={item.years} data-reveal="up">
+              <article className="timeline-item" key={item.years} data-reveal="cascade">
                 <p className="timeline-years">{item.years}</p>
                 <div>
                   <h3>{item.company}</h3>
@@ -254,14 +255,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section projects" id="projekter" aria-labelledby="projects-title">
+      <section className="section projects" id="projekter" aria-labelledby="projects-title" data-spotlight>
         <div className="section-label light-label" data-reveal="left">
           <span>04</span>
           <p>Udvalgte projekter</p>
         </div>
-        <div className="projects-content">
+        <div className="projects-content" data-skew>
           <div className="section-heading-row">
-            <h2 id="projects-title" data-reveal="headline">Komplekse problemer. Klare bevægelser.</h2>
+            <h2 id="projects-title" data-reveal="words">
+              <SplitWords text="Komplekse problemer. Klare bevægelser." />
+            </h2>
             <p data-reveal="up">
               Et udvalg af anonymiserede opgaver. Detaljerne varierer, men mønstret er det
               samme: forstå problemet, skab retning og byg noget, organisationen kan bære.
@@ -269,7 +272,7 @@ export default function Home() {
           </div>
           <div className="case-grid stagger-group">
             {cases.map((item, index) => (
-              <article className="case-card" key={item.title} data-reveal="card">
+              <article className="case-card" key={item.title} data-reveal="card" data-tilt>
                 <div className="case-meta">
                   <span>{String(index + 1).padStart(2, "0")}</span>
                   <span>{item.tag}</span>
@@ -301,7 +304,7 @@ export default function Home() {
                 et link.
               </p>
             </div>
-            <span className="button button-light">
+            <span className="button button-light" data-magnetic>
               Åbn Løsningsbygger <span aria-hidden="true">↗</span>
             </span>
           </a>
@@ -310,10 +313,8 @@ export default function Home() {
 
       <section className="contact" id="kontakt" aria-labelledby="contact-title">
         <p className="eyebrow" data-reveal="up">EN GOD SAMTALE ER ET GODT STED AT STARTE</p>
-        <h2 id="contact-title" data-reveal="headline">
-          Skal vi gøre det
-          <br />
-          komplekse <em>klart?</em>
+        <h2 id="contact-title" data-reveal="words">
+          <SplitWords text={"Skal vi gøre det\nkomplekse *klart?*"} />
         </h2>
         <p className="contact-intro" data-reveal="up">
           Jeg er altid åben for en nysgerrig samtale om AI, data, arkitektur og det, der skal
