@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://andreas-noergaard-ai.andapanda.chatgpt.site"),
+  metadataBase: new URL("https://anconsult.app"),
   title: "Andreas Nørgaard | AI Solutions Architect",
   description:
     "AI, data og arkitektur omsat til klar retning og løsninger, der virker i virkeligheden.",
