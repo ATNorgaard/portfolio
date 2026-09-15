@@ -1196,7 +1196,7 @@ footer { z-index: 6; }
 .contact-links {
   border-top: 1px solid rgba(20, 34, 33, 0.35);
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   max-width: 980px;
 }
 

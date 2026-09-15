@@ -322,11 +322,8 @@ export default function Home() {
         </p>
         <div className="contact-links" data-reveal="line">
           <a href="mailto:atnoergaard@gmail.com">atnoergaard@gmail.com ↗</a>
-          <a
-            href="https://www.linkedin.com/in/andreas-torp-n%C3%B8rgaard-8a32371b9/"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href="tel:+4527246784">+45 27 24 67 84 ↗</a>
+          <a href="https://www.linkedin.com/in/atnoergaard" target="_blank" rel="noreferrer">
             LinkedIn ↗
           </a>
         </div>
