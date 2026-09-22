@@ -1602,3 +1602,238 @@ footer > a:last-child {
     padding: 1.75rem;
   }
 }
+
+/* ── Værktøjskassen: /vaerktoejer, /log-ind, /konto, /admin ────────────────── */
+
+.tb-page {
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1.25rem, 5vw, 4rem) 6rem;
+}
+
+.tb-narrow { margin: 0 auto; max-width: 34rem; }
+.tb-wide   { margin: 0 auto; max-width: 62rem; }
+
+.tb-head {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.tb-back {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  transition: color 160ms ease;
+}
+.tb-back:hover { color: var(--ink); }
+
+.tb-title {
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin: 0 0 1rem;
+}
+
+.tb-h2 {
+  border-top: 1px solid var(--line-dark);
+  font-size: 1.05rem;
+  letter-spacing: 0.02em;
+  margin: 3rem 0 1rem;
+  padding-top: 1.25rem;
+  text-transform: uppercase;
+}
+
+.tb-lede {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0 0 2rem;
+  max-width: 46rem;
+}
+
+.tb-fine {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  margin: 0.75rem 0 0;
+}
+.tb-fine a { text-decoration: underline; }
+
+.tb-note {
+  background: var(--paper-deep);
+  border-left: 3px solid var(--ink-soft);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin: 0 0 2rem;
+  padding: 1rem 1.15rem;
+}
+.tb-note-ok  { border-left-color: var(--accent); }
+.tb-note-err { border-left-color: #b4483c; }
+.tb-note a   { text-decoration: underline; }
+
+.tb-error {
+  color: #b4483c;
+  font-size: 0.875rem;
+  margin: 0.5rem 0 0;
+}
+
+/* Formularer */
+.tb-form { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.tb-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.tb-input {
+  background: #fff;
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+  font: inherit;
+  padding: 0.8rem 0.9rem;
+  width: 100%;
+}
+.tb-input:focus-visible {
+  border-color: var(--ink);
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.tb-input-sm { font-size: 0.9rem; padding: 0.55rem 0.7rem; }
+
+.tb-button {
+  background: var(--ink);
+  border: 0;
+  border-radius: var(--radius-sm);
+  color: var(--paper);
+  cursor: pointer;
+  display: inline-block;
+  font: inherit;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  text-align: center;
+  transition: background 160ms ease, transform 160ms ease;
+}
+.tb-button:hover  { background: var(--ink-soft); transform: translateY(-1px); }
+.tb-button:active { transform: translateY(0); }
+
+.tb-link-button {
+  background: none;
+  border: 0;
+  color: var(--text-muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 0;
+  text-decoration: underline;
+}
+.tb-link-button:hover { color: var(--ink); }
+
+.tb-inline-form {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.tb-inline-form .tb-button { margin-top: 0; }
+.tb-inline-form .tb-input  { flex: 1 1 14rem; width: auto; }
+
+/* Katalog */
+.tb-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tb-card {
+  background: var(--paper-deep);
+  border: 1px solid var(--line-dark);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+.tb-card-top {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
+.tb-badge {
+  background: rgba(20, 34, 33, 0.08);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 0.3rem 0.7rem;
+  text-transform: uppercase;
+}
+.tb-badge-open { background: var(--accent-bright); }
+
+.tb-quota {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.tb-card-title { font-size: 1.35rem; margin: 0; }
+
+.tb-card-text {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.tb-card-actions { margin-top: auto; padding-top: 0.75rem; }
+
+/* Tabeller og lister */
+.tb-table {
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  width: 100%;
+}
+.tb-table th,
+.tb-table td {
+  border-bottom: 1px solid var(--line-dark);
+  padding: 0.7rem 0.6rem;
+  text-align: left;
+  vertical-align: top;
+}
+.tb-table th {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tb-list { list-style: none; margin: 0; padding: 0; }
+
+.tb-row {
+  align-items: center;
+  border-bottom: 1px solid var(--line-dark);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+@media (max-width: 640px) {
+  .tb-table { display: block; overflow-x: auto; white-space: nowrap; }
+}
+
+.tool-more { margin: 1.5rem 0 0; text-align: right; }

@@ -312,6 +312,12 @@ export default function Home() {
               Åbn Løsningsbygger <span aria-hidden="true">↗</span>
             </span>
           </a>
+
+          <p className="tool-more" data-reveal="left">
+            <a className="text-link" href="/vaerktoejer">
+              Se alle værktøjer <span aria-hidden="true">→</span>
+            </a>
+          </p>
         </div>
       </section>
 
