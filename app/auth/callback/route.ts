@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import { DEFAULT_RETURN, safeReturnTo } from "@/lib/return-url";
 import { supabaseServer } from "@/lib/supabase/server";
 
 const RETUR_COOKIE = "an_retur";
@@ -17,11 +18,8 @@ export async function GET(request: Request) {
   const code = url.searchParams.get("code");
 
   const store = await cookies();
-  const retur = store.get(RETUR_COOKIE)?.value ?? "/vaerktoejer";
+  const target = safeReturnTo(store.get(RETUR_COOKIE)?.value ?? DEFAULT_RETURN);
   store.delete(RETUR_COOKIE);
-
-  // Kun relative stier videre; ellers kan cookien bruges til at sende folk til et fremmed domæne.
-  const target = retur.startsWith("/") && !retur.startsWith("//") ? retur : "/vaerktoejer";
 
   if (!code) {
     return NextResponse.redirect(new URL("/log-ind?fejl=link", url.origin));

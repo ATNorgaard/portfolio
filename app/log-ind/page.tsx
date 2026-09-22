@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getUser } from "@/lib/access";
+import { DEFAULT_RETURN, safeReturnTo } from "@/lib/return-url";
 import { sendMagicLink } from "./actions";
 
 export const metadata: Metadata = {
@@ -12,10 +13,11 @@ export const metadata: Metadata = {
 type Search = { retur?: string; sendt?: string; fejl?: string };
 
 export default async function LogInd({ searchParams }: { searchParams: Promise<Search> }) {
-  const { retur = "/vaerktoejer", sendt, fejl } = await searchParams;
+  const { retur: returRaw, sendt, fejl } = await searchParams;
+  const retur = safeReturnTo(returRaw ?? DEFAULT_RETURN);
 
   const user = await getUser();
-  if (user) redirect(retur.startsWith("/") && !retur.startsWith("//") ? retur : "/vaerktoejer");
+  if (user) redirect(retur);
 
   return (
     <main className="tb-page">

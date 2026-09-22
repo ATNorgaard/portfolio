@@ -2,6 +2,7 @@
 
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
+import { safeReturnTo } from "@/lib/return-url";
 import { supabaseServer } from "@/lib/supabase/server";
 
 /**
@@ -17,13 +18,6 @@ async function origin(): Promise<string> {
   const host = h.get("x-forwarded-host") ?? h.get("host") ?? "anconsult.app";
   const proto = h.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
   return `${proto}://${host}`;
-}
-
-function safeReturnTo(value: FormDataEntryValue | null): string {
-  const raw = typeof value === "string" ? value : "/vaerktoejer";
-  // Kun relative stier. Ellers kan et login-link sende brugeren videre til et fremmed domæne.
-  if (!raw.startsWith("/") || raw.startsWith("//")) return "/vaerktoejer";
-  return raw;
 }
 
 export async function sendMagicLink(formData: FormData) {
